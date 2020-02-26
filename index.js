@@ -37,20 +37,17 @@ app.use(expressLayouts);
 // Middleware
 app.use(morgan("dev"));
 
-// Bring the Posts Routes
-const postsRoute = require('./routes/front-end/posts');
-
-// Get Posts
-app.use('/', postsRoute);
-
-// Get Single Post
-app.use('/:id', postsRoute);
-
 // Bring the Dashboard
 const dashboardRoute = require("./routes/admin/dashboard");
 
-// Get Dashboard
+// Get Dashboard Routes
 app.use('/dashboard', dashboardRoute);
+
+// Bring the Posts Routes
+const postsRoute = require('./routes/front-end/posts');
+
+// Register Posts Routes
+app.use('/', postsRoute);
 
 const port = process.env.PORT || 8080;
 

@@ -1,4 +1,3 @@
-
 const express = require('express');
 const postsController = require('../../controllers/front-end/posts');
 
@@ -12,8 +11,3 @@ router.get('/', postsController.getPosts);
 router.get('/:id', postsController.getSinglePost);
 
 module.exports = router;
-
-
-
-
-

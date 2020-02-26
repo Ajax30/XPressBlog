@@ -6,11 +6,6 @@ const dashboardController = require('../../controllers/admin/dashboard');
 const router = express.Router();
 
 // Display Dashboard
-router.get('/dashboard', dashboardController.displayDashboard);
+router.get('/', dashboardController.displayDashboard);
 
 module.exports = router;
-
-
-
-
-
