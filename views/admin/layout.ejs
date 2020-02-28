@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='bower_components/components-font-awesome/css/all.min.css' rel='stylesheet' type='text/css'>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <title><%= website_name %> | <%= page_heading %></title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<a class="navbar-brand" href="#"><%= page_heading %></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+					<span class="navbar-toggler-icon"></span>
+			</button>
+				<ul class="navbar-nav ml-auto">
+					<!-- Dropdown -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+							Welcome, Admin
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="#">Link 1</a>
+							<a class="dropdown-item" href="#">Link 2</a>
+							<a class="dropdown-item" href="#">Link 3</a>
+						</div>
+					</li>
+				</ul>
+			</div>  
+    </nav>
+
+		<div class="container-fluid pt-3">
+			<%- body; %>
+		</div>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/clean-blog.min.js"></script>
+
+</body>
+</html>

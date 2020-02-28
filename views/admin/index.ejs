@@ -1,0 +1,56 @@
+<div class="row">
+	<div class="col-sm-3 col-lg-2">
+		<div class="card">
+			<div class="card-header">Menu</div>
+			<div class="card-body p-0">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">First item</li>
+					<li class="list-group-item">Second item</li>
+					<li class="list-group-item">Third item</li>
+				</ul>
+			</div>
+		</div>		
+	</div>
+	<div class="col-sm-9 col-lg-10">
+		<div class="card">
+			<div class="card-header">Posts</div>
+			<div class="card-body p-0">
+				<div class="table-responsive-md">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="col-1">#</th>
+								<th class="col-3">Title</th>
+								<th class="col-3">Created</th>
+								<th class="col-3">Updated</th>
+								<th class="col-2">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% if (posts) { %>
+							<% posts.forEach(function(post) { %>
+							<tr>
+								<td><%= post.title %></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-success">Edit</button>
+										<button type="button" class="btn btn-sm btn-success">Delete</button>
+									</div>
+								</td>
+							</tr>
+							<% }); %>
+							<% } else{ %> 
+							<tr>
+								<td colspan="5">There are no posts</td> 
+							</tr>		
+							<% } %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
