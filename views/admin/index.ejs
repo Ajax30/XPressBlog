@@ -20,10 +20,10 @@
 						<thead>
 							<tr class="d-flex">
 								<th class="col-1">#</th>
-								<th class="col-3">Title</th>
-								<th class="col-3">Created</th>
-								<th class="col-3">Updated</th>
-								<th class="col-2">Actions</th>
+								<th class="col-4 col-lg-5">Title</th>
+								<th class="col-2">Created</th>
+								<th class="col-2">Updated</th>
+								<th class="col-3 col-lg-2">Actions</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -31,10 +31,10 @@
 							<% posts.forEach(function(post) { %>
 							<tr class="d-flex">
 								<td class="col-1"></td>
-								<td class="col-3"><%= post.title %></td>
-								<td class="col-3"></td>
-								<td class="col-3"></td>
-								<td class="col-2">
+								<td class="col-4 col-lg-5"><%= post.title %></td>
+								<td class="col-2"></td>
+								<td class="col-2"></td>
+								<td class="col-3 col-lg-2">
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-success">Edit</button>
 										<button type="button" class="btn btn-sm btn-success">Delete</button>
@@ -42,7 +42,7 @@
 								</td>
 							</tr>
 							<% }); %>
-							<% } else{ %> 
+							<% } else { %> 
 							<tr>
 								<td colspan="5">There are no posts</td> 
 							</tr>		
