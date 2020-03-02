@@ -10,7 +10,7 @@ exports.getPosts = (req, res, next) => {
                 website_name: 'MEAN Blog',
                 page_heading: 'XPress News',
                 page_subheading: 'A MEAN Stack Blogging Application',
-                posts: posts
+                posts: posts.reverse(),
             });
         }
     });

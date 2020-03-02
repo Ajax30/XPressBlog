@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
 const morgan = require("morgan");
+const bodyParser = require('body-parser');
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 
@@ -36,6 +37,12 @@ app.use(expressLayouts);
 
 // Middleware
 app.use(morgan("dev"));
+
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Bring the Dashboard
 const dashboardRoute = require("./routes/admin/dashboard");

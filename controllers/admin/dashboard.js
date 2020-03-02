@@ -14,4 +14,38 @@ exports.displayDashboard = (req, res, next) => {
         }
     });
 };
+
+exports.addPostForm = (req, res, next) => {
+    res.render('admin/addpost', {
+        layout: 'admin/layout',
+        website_name: 'MEAN Blog',
+        page_heading: 'Dashboard',
+        page_subheading: 'Add New Post',
+      });
+}
+
+exports.addPost = (req, res, next) => {
+    const post = new Post();
+        post.title = req.body.title;
+        post.short_description = req.body.excerpt
+        post.full_text = req.body.body;
+
+    post.save(function(err){
+        if(err){
+            console.log(err);
+            return;
+        }
+    });
+}
+
+
+exports.deletePost = (req, res, next) => {
+	const postId = req.params.id;
+	posts.findByIdAndRemove(postId, function(err){
+		if (err) {
+			console.log('Error: ', err);
+		}
+		res.sendStatus(200);
+	});
+}
   

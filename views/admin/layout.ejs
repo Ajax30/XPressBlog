@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href='bower_components/components-font-awesome/css/all.min.css' rel='stylesheet' type='text/css'>
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href='/bower_components/components-font-awesome/css/all.min.css' rel='stylesheet' type='text/css'>
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <title><%= website_name %> | <%= page_heading %></title>
 </head>
 <body>
@@ -31,13 +31,30 @@
 			</div>  
     </nav>
 
-		<div class="container-fluid pt-3">
-			<%- body; %>
+		<div class="container pt-3">
+			<div class="row">
+				<!-- Sidebar Begin -->
+				<div class="col-sm-5 col-md-4 col-lg-3">
+					<div class="card mb-3">
+						<div class="card-header px-1">
+							<h6 class="m-0">Menu</h6>
+						</div>
+						<div class="card-body p-0">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">First item</li>
+								<li class="list-group-item">Second item</li>
+								<li class="list-group-item">Third item</li>
+							</ul>
+						</div>
+					</div>		
+				</div><!-- Sidebar End -->
+				<%- body; %>
+			</div>
 		</div>
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/clean-blog.min.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/assets/js/admin.js"></script>
 
 </body>
 </html>
