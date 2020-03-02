@@ -41,7 +41,7 @@ exports.addPost = (req, res, next) => {
 
 exports.deletePost = (req, res, next) => {
 	const postId = req.params.id;
-	posts.findByIdAndRemove(postId, function(err){
+	Post.findByIdAndRemove(postId, function(err){
 		if (err) {
 			console.log('Error: ', err);
 		}

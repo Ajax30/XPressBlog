@@ -4,9 +4,9 @@ $(document).ready(function(){
     let postId = $(this).data('id');
     if(confirm('Delete this post?')) {
       $.ajax({
-        url: '/post/delete/' + postId,
+        url: '/dashboard/post/delete/' + postId,
         method: 'DELETE',
-        success: function(deleteMsg){
+        success: function(){
           $('tr[data-id="' + postId +'"]').fadeOut('250');
         }
       });
