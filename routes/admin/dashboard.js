@@ -14,6 +14,9 @@ router.get('/addpost', dashboardController.addPostForm);
 // Add Post
 router.post('/post/add', dashboardController.addPost);
 
+// Edit Post
+router.get('/post/edit/:id', dashboardController.editPost);
+
 // Delete Post
 router.delete('/post/delete/:id', dashboardController.deletePost);
 

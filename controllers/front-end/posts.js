@@ -1,4 +1,5 @@
 const Post = require('../../models/post');
+const moment = require('moment');
 
 exports.getPosts = (req, res, next) => {
     const posts = Post.find({}, (err, posts) => {
@@ -6,6 +7,7 @@ exports.getPosts = (req, res, next) => {
             console.log('Error: ', err);
         } else {
             res.render('default/index', {
+                moment: moment,
                 layout: 'default/layout',
                 website_name: 'MEAN Blog',
                 page_heading: 'XPress News',

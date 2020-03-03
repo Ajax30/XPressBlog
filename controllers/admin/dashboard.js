@@ -34,10 +34,28 @@ exports.addPost = (req, res, next) => {
         if(err){
             console.log(err);
             return;
-        }
+        } else {
+					res.redirect('/');
+				}
     });
 }
 
+exports.editPost = (req, res, next) => {
+	const postId = req.params.id;
+	Post.findById(postId, function(err, post){
+		if (!err) {
+			res.render('admin/editpost', {
+        layout: 'admin/layout',
+        website_name: 'MEAN Blog',
+        page_heading: 'Dashboard',
+				page_subheading: 'Edit Post',
+				post: post
+      });
+		} else {
+			console.log('Error: ', err);
+		}
+	});
+}
 
 exports.deletePost = (req, res, next) => {
 	const postId = req.params.id;
