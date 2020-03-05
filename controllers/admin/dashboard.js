@@ -35,7 +35,8 @@ exports.addPost = (req, res, next) => {
             console.log(err);
             return;
         } else {
-					res.redirect('/');
+					req.flash('success', "The post was successfully added");
+					req.session.save(() => res.redirect('/dashboard'));
 				}
     });
 }
@@ -43,17 +44,37 @@ exports.addPost = (req, res, next) => {
 exports.editPost = (req, res, next) => {
 	const postId = req.params.id;
 	Post.findById(postId, function(err, post){
-		if (!err) {
+		if (err) {
+			console.log('Error: ', err);
+		} else {
 			res.render('admin/editpost', {
         layout: 'admin/layout',
         website_name: 'MEAN Blog',
         page_heading: 'Dashboard',
 				page_subheading: 'Edit Post',
 				post: post
-      });
-		} else {
-			console.log('Error: ', err);
+			});
 		}
+	});
+}
+
+exports.updatePost = (req, res, next) => {
+	const postId = req.params.id;
+	const query = {_id:req.params.id}
+	
+	const post = {};
+		post.title = req.body.title;
+		post.short_description = req.body.excerpt
+		post.full_text = req.body.body;
+
+	Post.update(query, post, function(err){
+			if(err){
+					console.log(err);
+					return;
+			} else {
+				req.flash('success', "The post was successfully updated");
+				req.session.save(() => res.redirect('/dashboard'));
+			}
 	});
 }
 

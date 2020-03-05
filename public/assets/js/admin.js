@@ -1,4 +1,11 @@
 $(document).ready(function(){
+
+  // Hide alerts
+  $('.alert:not(".alert-dismissible")').each(function(){
+    $(this).delay(3000).fadeOut(200);
+  });
+  
+  // Delete post
   $('.delete-post').on('click', function(evt){
     evt.preventDefault();
     const postId = $(this).data('id');

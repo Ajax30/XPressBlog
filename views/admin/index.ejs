@@ -2,7 +2,7 @@
 		<div class="card">
 			<div class="card-header d-flex py-2 px-2">
 				<h6 class="m-0 mr-auto d-flex flex-column justify-content-center">Posts</h3>
-				<a href="./addpost" class=" ml-auto btn btn-sm btn-success">Add post</a>	
+				<a href="../dashboard/addpost" class=" ml-auto btn btn-sm btn-success">Add post</a>	
 			</div>
 			<div class="card-body p-0">
 				<div class="table-responsive-md">
@@ -21,12 +21,14 @@
 							<% posts.forEach(function(post, index) { %>
 							<tr data-id="<%= post._id %>" class="d-flex">
 								<td class="col-1 pl-2"><%= index + 1 %></td>
-								<td class="col-4 col-lg-5"><%= post.title %></td>
+								<td class="col-4 col-lg-5">
+									<a href="/<%= post._id %>" class="text-dark"><%= post.title %></a>
+								</td>
 								<td class="col-2"><%= post.created_at.toDateString(); %></td>
 								<td class="col-2"><%= post.updated_at.toDateString(); %></td>
 								<td class="col-3 col-lg-2 text-right pr-2">
 									<div class="btn-group">
-										<a href="./post/edit/<%= post._id %>" class="btn btn-sm btn-success">Edit</a>
+										<a href="../dashboard/post/edit/<%= post._id %>" class="btn btn-sm btn-success">Edit</a>
 										<a href="#" class="btn btn-sm btn-danger delete-post" data-id="<%= post._id %>">Delete</a>
 									</div>
 								</td>
