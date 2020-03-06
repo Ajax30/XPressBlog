@@ -9,46 +9,12 @@
     <title><%= website_name %> | <%= page_heading %></title>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-			<a class="navbar-brand" href="#"><%= page_heading %></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-					<span class="navbar-toggler-icon"></span>
-			</button>
-				<ul class="navbar-nav ml-auto">
-					<!-- Dropdown -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-							Welcome, Admin
-						</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Link 1</a>
-							<a class="dropdown-item" href="#">Link 2</a>
-							<a class="dropdown-item" href="#">Link 3</a>
-						</div>
-					</li>
-				</ul>
-			</div>  
-    </nav>
+    <%- include('../partials/navbar'); %>
 
 		<div class="container pt-3">
 			<%- include('../partials/messages'); %>
 			<div class="row">
-				<!-- Sidebar Begin -->
-				<div class="col-sm-5 col-md-4 col-lg-3">
-					<div class="card mb-3">
-						<div class="card-header px-2">
-							<h6 class="m-0">Menu</h6>
-						</div>
-						<div class="card-body p-0">
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">First item</li>
-								<li class="list-group-item">Second item</li>
-								<li class="list-group-item">Third item</li>
-							</ul>
-						</div>
-					</div>		
-				</div><!-- Sidebar End -->
+				<%- include('../partials/sidebar'); %>
 				<%- body; %>
 			</div>
 		</div>
