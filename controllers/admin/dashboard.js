@@ -1,4 +1,5 @@
 const Post = require('../../models/post');
+const { check, validationResult } = require('express-validator');
 
 exports.displayDashboard = (req, res, next) => {
     const posts = Post.find({}, (err, posts) => {
@@ -25,20 +26,45 @@ exports.addPostForm = (req, res, next) => {
 }
 
 exports.addPost = (req, res, next) => {
-    const post = new Post();
-        post.title = req.body.title;
-        post.short_description = req.body.excerpt
-        post.full_text = req.body.body;
+		// Form validation rules
+		check('title').isEmpty();
+		check('excerpt').isEmpty();
+		check('body').isEmpty();
 
-    post.save(function(err){
-        if(err){
-            console.log(err);
-            return;
-        } else {
-					req.flash('success', "The post was successfully added");
-					req.session.save(() => res.redirect('/dashboard'));
-				}
-    });
+		const errors = validationResult(req);
+
+		if (!errors.isEmpty()) {
+			console.log('there are no validation errors');
+		} else {
+			console.log(errors);
+		}
+
+		if (!errors.isEmpty()) {
+			res.render('admin/addpost', {
+        layout: 'admin/layout',
+        website_name: 'MEAN Blog',
+        page_heading: 'Dashboard',
+				page_subheading: 'Add New Post',
+				errors: errors
+			});
+			req.flash('danger', errors);
+			req.session.save(() => res.redirect('/dashboard'));
+		} else {
+				const post = new Post();
+					post.title = req.body.title;
+					post.short_description = req.body.excerpt
+					post.full_text = req.body.body;
+
+				post.save(function(err){
+						if(err){
+								console.log(err);
+								return;
+						} else {
+							req.flash('success', "The post was successfully added");
+							req.session.save(() => res.redirect('/dashboard'));
+						}
+				});
+		}
 }
 
 exports.editPost = (req, res, next) => {

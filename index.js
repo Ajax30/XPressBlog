@@ -6,7 +6,6 @@ const morgan = require("morgan");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressLayouts = require("express-ejs-layouts");
-const expressValidator = require("express-validator");
 const flash = require("express-flash");
 const session = require("express-session");
 const app = express();
@@ -63,24 +62,6 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
   next();
 });
-
-// Express Validator Middleware
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
-
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
 
 // Bring the Dashboard
 const dashboardRoute = require("./routes/admin/dashboard");
