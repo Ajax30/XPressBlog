@@ -27,17 +27,17 @@ exports.addPostForm = (req, res, next) => {
 
 exports.addPost = (req, res, next) => {
 		// Form validation rules
-		check('title').isEmpty();
-		check('excerpt').isEmpty();
-		check('body').isEmpty();
+		check('title', 'The title field id required')
+		.not()
+		.isEmpty();
+	check('excerpt', 'The excerpt field id required')
+		.not()
+		.isEmpty();
+ check('body', 'The full text field id required')
+		.not()
+		.isEmpty();
 
 		const errors = validationResult(req);
-
-		if (!errors.isEmpty()) {
-			console.log('there are no validation errors');
-		} else {
-			console.log(errors);
-		}
 
 		if (!errors.isEmpty()) {
 			res.render('admin/addpost', {
@@ -85,7 +85,6 @@ exports.editPost = (req, res, next) => {
 }
 
 exports.updatePost = (req, res, next) => {
-	const postId = req.params.id;
 	const query = {_id:req.params.id}
 	
 	const post = {};
