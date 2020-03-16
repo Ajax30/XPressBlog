@@ -1,5 +1,5 @@
 const Post = require('../../models/post');
-const { check, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 
 exports.displayDashboard = (req, res, next) => {
     const posts = Post.find({}, (err, posts) => {
@@ -26,16 +26,6 @@ exports.addPostForm = (req, res, next) => {
 }
 
 exports.addPost = (req, res, next) => {
-		// Form validation rules
-		check('title', 'The title field id required')
-		.not()
-		.isEmpty();
-	check('excerpt', 'The excerpt field id required')
-		.not()
-		.isEmpty();
- check('body', 'The full text field id required')
-		.not()
-		.isEmpty();
 
 		const errors = validationResult(req);
 
@@ -44,11 +34,9 @@ exports.addPost = (req, res, next) => {
         layout: 'admin/layout',
         website_name: 'MEAN Blog',
         page_heading: 'Dashboard',
-				page_subheading: 'Add New Post',
-				errors: errors
+				page_subheading: 'Add New Post'
 			});
-			req.flash('danger', errors);
-			req.session.save(() => res.redirect('/dashboard'));
+			return res.status(400).send(errors.array());
 		} else {
 				const post = new Post();
 					post.title = req.body.title;
