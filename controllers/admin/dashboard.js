@@ -36,7 +36,7 @@ exports.addPost = (req, res, next) => {
         page_heading: 'Dashboard',
 				page_subheading: 'Add New Post'
 			});
-			return res.status(400).send(errors.array());
+			
 		} else {
 				const post = new Post();
 					post.title = req.body.title;
