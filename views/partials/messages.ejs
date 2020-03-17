@@ -1,7 +1,14 @@
 <div id="messages" class="text-center">
 	<% Object.keys(messages).forEach(function (type) { %>
-		<% messages[type].forEach(function (message) { %>
-			<div class="alert alert-<%= type %>"><%= message %></div>
-		<% }) %>
+			<% messages[type].forEach(function (message) { %>
+					<div class="alert alert-success <% if (type === 'danger') { %> alert-dismissible <% } %> alert-<%= type %>">
+						<% if (type === 'danger') { %>
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<%= message.msg %>
+						<%} else { %>
+							<%= message %>
+						<% } %>
+				</div>
+			<% }) %>
 	<% }) %>
 </div>

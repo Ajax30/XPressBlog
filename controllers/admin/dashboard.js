@@ -26,33 +26,26 @@ exports.addPostForm = (req, res, next) => {
 }
 
 exports.addPost = (req, res, next) => {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+			req.flash('danger', errors.array())
+			req.session.save(() => res.redirect('../addpost'));
+	} else {
+					const post = new Post();
+							post.title = req.body.title;
+							post.short_description = req.body.excerpt
+							post.full_text = req.body.body;
 
-		const errors = validationResult(req);
-
-		if (!errors.isEmpty()) {
-			res.render('admin/addpost', {
-        layout: 'admin/layout',
-        website_name: 'MEAN Blog',
-        page_heading: 'Dashboard',
-				page_subheading: 'Add New Post'
-			});
-			
-		} else {
-				const post = new Post();
-					post.title = req.body.title;
-					post.short_description = req.body.excerpt
-					post.full_text = req.body.body;
-
-				post.save(function(err){
-						if(err){
-								console.log(err);
-								return;
-						} else {
-							req.flash('success', "The post was successfully added");
-							req.session.save(() => res.redirect('/dashboard'));
-						}
-				});
-		}
+					post.save(function(err){
+									if(err){
+													console.log(err);
+													return;
+									} else {
+											req.flash('success', "The post was successfully added");
+											req.session.save(() => res.redirect('/dashboard'));
+									}
+					});
+	}
 }
 
 exports.editPost = (req, res, next) => {
