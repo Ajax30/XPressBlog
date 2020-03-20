@@ -6,16 +6,16 @@
 			<div class="card-body p-2">
 				<form action="./post/add" method="POST" class="mb-0">    		    
 					<div class="form-group">
-						<input type="text" class="form-control" name="title" value="<%=post && post.title? post.title : ''%>" placeholder="Title" />
-				</div>
-
-				<div class="form-group">
-						<input type="text" class="form-control" name="excerpt" value="<%=post && post.short_description? post.short_description : ''%>" placeholder="Excerpt" />
-				</div>
-
-				<div class="form-group">
-						<textarea rows="5" class="form-control" name="body" placeholder="Full text"><%=post && post.full_text? post.full_text : ''%></textarea>
-				</div>
+							<input type="text" class="form-control" name="title" value="<%= typeof form!='undefined' ? form.titleholder : '' %>" placeholder="Title" />
+					</div>
+					
+					<div class="form-group">
+							<input type="text" class="form-control" name="excerpt" value="<%= typeof form!='undefined' ? form.excerptholder : '' %>" placeholder="Excerpt" />
+					</div>
+					
+					<div class="form-group">
+							<textarea rows="5" class="form-control" name="body" placeholder="Full text"><%= typeof form!='undefined' ? form.bodyholder : '' %></textarea>
+					</div>
 					
 					<div class="form-group mb-0">
 						<input type="submit" value="Add Post" class="btn btn-block btn-md btn-success">
@@ -25,14 +25,3 @@
 		</div>
 	</div>
 
-	<!-- <div class="form-group">
-		<input type="text" class="form-control" name="title" value="<%= typeof form!='undefined' ? form.titleholder : '' %>" placeholder="Title" />
-</div>
-
-<div class="form-group">
-		<input type="text" class="form-control" name="excerpt" value="<%= typeof form!='undefined' ? form.excerptholder : '' %>" placeholder="Excerpt" />
-</div>
-
-<div class="form-group">
-		<textarea rows="5" class="form-control" name="body" placeholder="Full text"><%= typeof form!='undefined' ? form.bodyholder : '' %></textarea>
-</div> -->
