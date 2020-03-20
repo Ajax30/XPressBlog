@@ -26,10 +26,21 @@ exports.addPostForm = (req, res, next) => {
 }
 
 exports.addPost = (req, res, next) => {
+	var form = {
+		titleholder: req.body.title,
+		expertholder: req.body.excerpt,
+		bodyholder: req.body.body
+	};
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 			req.flash('danger', errors.array())
 			req.session.save(() => res.redirect('../addpost'));
+			// res.render('admin/addpost',{
+			// 	layout: 'admin/layout',
+			// 	website_name: 'MEAN Blog',
+			// 	page_heading: 'Dashboard',
+			// 	page_subheading: 'Add New Post',
+			// 	form:form});
 	} else {
 					const post = new Post();
 							post.title = req.body.title;
