@@ -28,9 +28,10 @@ exports.addPostForm = (req, res, next) => {
 exports.addPost = (req, res, next) => {
 	var form = {
 			titleholder: req.body.title,
-			expertholder: req.body.excerpt,
+			excerptholder: req.body.excerpt,
 			bodyholder: req.body.body
 	};
+	
 	const errors = validationResult(req);
 
 	const post = new Post();
