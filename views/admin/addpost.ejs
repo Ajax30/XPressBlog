@@ -4,7 +4,7 @@
 				<h6 class="m-0"><%= page_subheading %></h6>
 			</div>
 			<div class="card-body p-2">
-				 <form action="/dashboard/post/add" method="POST" class="mb-0">               
+				<form action="/dashboard/post/add" method="POST" class="mb-0">               
 						<div class="form-group">
 							<input type="text" class="form-control" name="title" value="<%= typeof form!='undefined' ? form.titleholder : '' %>" placeholder="Title" />
 						</div>
@@ -20,7 +20,7 @@
 						<div class="form-group mb-0">
 							<input type="submit" value="Add Post" class="btn btn-block btn-md btn-success">
 						</div>
-        </form>
-      </div>
+				</form>
+			</div>
 		</div>
 	</div>
