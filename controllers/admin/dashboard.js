@@ -47,7 +47,9 @@ exports.addPost = (req, res, next) => {
 							website_name: 'MEAN Blog',
 							page_heading: 'Dashboard',
 							page_subheading: 'Add New Post',
-							form:form});
+							form:form
+						}
+					);
 	} else {
 			post.save(function(err) {
 					if (err) {
@@ -63,6 +65,7 @@ exports.addPost = (req, res, next) => {
 
 exports.editPost = (req, res, next) => {
 	const postId = req.params.id;
+
 	Post.findById(postId, function(err, post){
 		if (err) {
 			console.log('Error: ', err);
@@ -79,22 +82,46 @@ exports.editPost = (req, res, next) => {
 }
 
 exports.updatePost = (req, res, next) => {
+
 	const query = {_id:req.params.id}
+
+	var form = {
+		titleholder: req.body.title,
+		excerptholder: req.body.excerpt,
+		bodyholder: req.body.body
+};
+
+	const errors = validationResult(req);
 	
 	const post = {};
+	
+		post._id = req.params.id;
 		post.title = req.body.title;
 		post.short_description = req.body.excerpt
 		post.full_text = req.body.body;
 
-	Post.update(query, post, function(err){
-			if(err){
-					console.log(err);
-					return;
-			} else {
-				req.flash('success', "The post was successfully updated");
-				req.session.save(() => res.redirect('/dashboard'));
+		if (!errors.isEmpty()) {
+			req.flash('danger', errors.array())
+			res.render('admin/editpost',{
+				layout: 'admin/layout',
+				website_name: 'MEAN Blog',
+				page_heading: 'Dashboard',
+				page_subheading: 'Edit Post',
+				form: form,
+				post: post
 			}
-	});
+		);
+		} else {
+			Post.update(query, post, function(err){
+					if(err){
+							console.log(err);
+							return;
+					} else {
+						req.flash('success', "The post was successfully updated");
+						req.session.save(() => res.redirect('/dashboard'));
+					}
+			});
+		}
 }
 
 exports.deletePost = (req, res, next) => {

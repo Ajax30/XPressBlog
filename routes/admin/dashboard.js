@@ -19,7 +19,7 @@ router.post('/post/add', validator.addPostCheck, dashboardController.addPost);
 router.get('/post/edit/:id', dashboardController.editPost);
 
 // Update Post
-router.post('/post/update/:id', dashboardController.updatePost);
+router.post('/post/update/:id', validator.addPostCheck, dashboardController.updatePost);
 
 // Delete Post
 router.delete('/post/delete/:id', dashboardController.deletePost);
