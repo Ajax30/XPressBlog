@@ -17,8 +17,13 @@
 							<textarea rows="5" class="form-control" name="body" placeholder="Full text"><%= typeof form!='undefined' ? form.bodyholder : '' %></textarea>
 						</div>
 
-						<div class="form-group mb-0">
+						<div class="form-group d-flex mb-0">
+							<div class="w-50 pr-1">
 							<input type="submit" value="Add Post" class="btn btn-block btn-md btn-success">
+						</div>
+						<div class="w-50 pl-1">
+							<a href="/dashboard" class="btn btn-block btn-md btn-success">Cancel</a>
+						</div>
 						</div>
 				</form>
 			</div>
