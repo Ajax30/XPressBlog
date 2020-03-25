@@ -1,5 +1,17 @@
+const multer = require("multer");
 const Post = require('../../models/post');
 const { validationResult } = require('express-validator');
+
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+			cb(null, './uploads/images')
+	},
+	filename: function (req, file, cb) {
+			cb(null, file.fieldname + '-' + Date.now() + '.png')
+	}
+});
+
+const upload = multer({ storage: storage }).single('postimage');
 
 exports.displayDashboard = (req, res, next) => {
     const posts = Post.find({}, (err, posts) => {
@@ -26,6 +38,17 @@ exports.addPostForm = (req, res, next) => {
 }
 
 exports.addPost = (req, res, next) => {
+
+	upload(req, res, function (err) {
+		if (err) {
+				console.log("There was an error uploading the image.");
+		}
+		res.json({
+				success: true,
+				message: 'Image uploaded!'
+		});
+  })
+		
 	var form = {
 			titleholder: req.body.title,
 			excerptholder: req.body.excerpt,
