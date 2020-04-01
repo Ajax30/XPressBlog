@@ -37,7 +37,7 @@ exports.addPost = (req, res, next) => {
 	const post = new Post();
 
     post.title = req.body.title;
-    post.short_description = req.body.excerpt;
+    post.short_description = req.body.excerpt
     post.full_text = req.body.body;
 
 	if (!errors.isEmpty()) {
