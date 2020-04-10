@@ -28,14 +28,6 @@ exports.addPostForm = (req, res, next) => {
 
 exports.addPost = (req, res, next) => {
 
-	upload(req, res, (err) => {
-		if (err) {
-				console.log("There was an error uploading the image.");
-		} else {
-			res.sendStatus(200);
-		}
-	})
-
 	var form = {
 			titleholder: req.body.title,
 			excerptholder: req.body.excerpt,
