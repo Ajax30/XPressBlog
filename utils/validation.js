@@ -1,4 +1,5 @@
 const { check } = require('express-validator');
+
 exports.addPostCheck = [
     check('title', 'The title field id required')
     .not()

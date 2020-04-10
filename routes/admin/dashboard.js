@@ -1,6 +1,7 @@
 
 const express = require('express');
-const validator = require('../../utils/validation.js')
+const imageUploader = require('../../utils/validation.js');
+const validator = require('../../utils/validation.js');
 const dashboardController = require('../../controllers/admin/dashboard');
 
 // Express router
@@ -13,7 +14,7 @@ router.get('/', dashboardController.displayDashboard);
 router.get('/addpost', dashboardController.addPostForm);
 
 // Add Post
-router.post('/post/add', validator.addPostCheck, dashboardController.addPost);
+router.post('/post/add', imageUploader.upload, validator.addPostCheck, dashboardController.addPost);
 
 // Edit Post
 router.get('/post/edit/:id', dashboardController.editPost);

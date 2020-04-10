@@ -1,4 +1,5 @@
 const Post = require('../../models/post');
+const { upload } = require('multer');
 const { validationResult } = require('express-validator');
 
 exports.displayDashboard = (req, res, next) => {
@@ -26,6 +27,15 @@ exports.addPostForm = (req, res, next) => {
 }
 
 exports.addPost = (req, res, next) => {
+
+	upload(req, res, function (err) {
+		if (err) {
+				console.log("There was an error uploading the image.");
+		} else {
+			res.sendStatus(200);
+		}
+	})
+
 	var form = {
 			titleholder: req.body.title,
 			excerptholder: req.body.excerpt,
