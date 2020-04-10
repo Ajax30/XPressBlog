@@ -28,7 +28,7 @@ exports.addPostForm = (req, res, next) => {
 
 exports.addPost = (req, res, next) => {
 
-	upload(req, res, function (err) {
+	upload(req, res, (err) => {
 		if (err) {
 				console.log("There was an error uploading the image.");
 		} else {

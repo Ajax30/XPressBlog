@@ -1,6 +1,6 @@
 
 const express = require('express');
-const imageUploader = require('../../utils/validation.js');
+const imageUploader = require('../../utils/imageupload.js');
 const validator = require('../../utils/validation.js');
 const dashboardController = require('../../controllers/admin/dashboard');
 
