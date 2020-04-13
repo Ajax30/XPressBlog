@@ -40,7 +40,10 @@ exports.addPost = (req, res, next) => {
 
     post.title = req.body.title;
     post.short_description = req.body.excerpt
-    post.full_text = req.body.body;
+		post.full_text = req.body.body;
+		if (req.file) {
+			post.post_image = req.file.filename;
+		} 
 
 	if (!errors.isEmpty()) {
 					req.flash('danger', errors.array())
@@ -101,6 +104,9 @@ exports.updatePost = (req, res, next) => {
 		post.title = req.body.title;
 		post.short_description = req.body.excerpt
 		post.full_text = req.body.body;
+		if (req.file) {
+			post.post_image = req.file.filename;
+		} 
 
 		if (!errors.isEmpty()) {
 			req.flash('danger', errors.array())

@@ -29,6 +29,10 @@ mongoose.connection.on("error", err => {
 // Set static directory
 app.use(express.static(path.join(__dirname, "public")));
 
+// Set uploads directory
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+
 // Set views directory
 app.set("views", path.join(__dirname, "views"));
 

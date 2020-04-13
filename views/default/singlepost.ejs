@@ -1,5 +1,5 @@
 <!-- Post Header -->
-  <header class="masthead" style="background-image: url('assets/images/<%= post.post_image %>')">
+  <header class="masthead" style="background-image: url('uploads/images/<%= post.post_image ? post.post_image : 'default.jpg' %>')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">

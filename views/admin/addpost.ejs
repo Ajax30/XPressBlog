@@ -8,16 +8,20 @@
 						<div class="form-group">
 							<input type="text" class="form-control" name="title" value="<%= typeof form!='undefined' ? form.titleholder : '' %>" placeholder="Title" />
 						</div>
+
 						<div class="form-group">
 							<input type="text" class="form-control" name="excerpt" value="<%= typeof form!='undefined' ? form.excerptholder : '' %>" placeholder="Excerpt" />
 						</div>
+
 						<div class="form-group">
 							<textarea rows="5" class="form-control" name="body" placeholder="Full text"><%= typeof form!='undefined' ? form.bodyholder : '' %></textarea>
 						</div>
+
 						<label for="postimage">Upload an image</label>
 						<div class="form-group">
 							<input type="file" name="postimage" id="postimage" size="20">
 						</div>
+
 						<div class="form-group d-flex mb-0">
 							<div class="w-50 pr-1">
 								<input type="submit" value="Add Post" class="btn btn-block btn-md btn-success">
@@ -26,6 +30,7 @@
 								<a href="/dashboard" class="btn btn-block btn-md btn-success">Cancel</a>
 							</div>
 						</div>
+						
 					</form>
 			</div>
 		</div>

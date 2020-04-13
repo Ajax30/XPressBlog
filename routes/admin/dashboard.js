@@ -20,7 +20,7 @@ router.post('/post/add', imageUploader.upload, validator.addPostCheck, dashboard
 router.get('/post/edit/:id', dashboardController.editPost);
 
 // Update Post
-router.post('/post/update/:id', validator.addPostCheck, dashboardController.updatePost);
+router.post('/post/update/:id', imageUploader.upload, validator.addPostCheck, dashboardController.updatePost);
 
 // Delete Post
 router.delete('/post/delete/:id', dashboardController.deletePost);
