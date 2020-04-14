@@ -10,10 +10,11 @@
 						<thead>
 							<tr class="d-flex">
 								<th class="col-1 pl-2">#</th>
-								<th class="col-4 col-lg-5">Title</th>
+								<th class="col-2">Title</th>
+								<th class="col-2">Category</th>
 								<th class="col-2">Created</th>
 								<th class="col-2">Updated</th>
-								<th class="col-3 col-lg-2 pr-2 text-right">Actions</th>
+								<th class="col-3 pr-2 text-right">Actions</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -21,12 +22,13 @@
 							<% posts.forEach(function(post, index) { %>
 							<tr data-id="<%= post._id %>" class="d-flex">
 								<td class="col-1 pl-2"><%= index + 1 %></td>
-								<td class="col-4 col-lg-5">
+								<td class="col-2">
 									<a href="/<%= post._id %>" class="text-dark"><%= post.title %></a>
 								</td>
+								<td class="col-2"><%= post.category.cat_name %></td>
 								<td class="col-2"><%= post.created_at.toDateString(); %></td>
 								<td class="col-2"><%= post.updated_at.toDateString(); %></td>
-								<td class="col-3 col-lg-2 text-right pr-2">
+								<td class="col-3 text-right pr-2">
 									<div class="btn-group">
 										<a href="../dashboard/post/edit/<%= post._id %>" class="btn btn-sm btn-success">Edit</a>
 										<a href="#" class="btn btn-sm btn-danger delete-post" data-id="<%= post._id %>">Delete</a>

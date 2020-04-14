@@ -1,4 +1,5 @@
 const Post = require('../../models/post');
+const Category = require('../../models/categories');
 const { upload } = require('multer');
 const { validationResult } = require('express-validator');
 
@@ -14,21 +15,28 @@ exports.displayDashboard = (req, res, next) => {
               posts: posts
             });
         }
-    });
+    }).populate({ path: 'category', model: Category })
 };
 
 exports.addPostForm = (req, res, next) => {
-    res.render('admin/addpost', {
+	const categories = Category.find({}, (err, categories) => {
+		if(err){
+			console.log('Error: ', err);
+		} else {
+			res.render('admin/addpost', {
         layout: 'admin/layout',
         website_name: 'MEAN Blog',
         page_heading: 'Dashboard',
-        page_subheading: 'Add New Post',
+				page_subheading: 'Add New Post',
+				categories: categories
       });
+		}
+	});
 }
 
 exports.addPost = (req, res, next) => {
 
-	var form = {
+	const form = {
 			titleholder: req.body.title,
 			excerptholder: req.body.excerpt,
 			bodyholder: req.body.body
@@ -41,20 +49,24 @@ exports.addPost = (req, res, next) => {
     post.title = req.body.title;
     post.short_description = req.body.excerpt
 		post.full_text = req.body.body;
+		post.category = req.body.category;
 		if (req.file) {
 			post.post_image = req.file.filename;
 		} 
 
 	if (!errors.isEmpty()) {
+			const categories = Category.find({}, (err, categories) => {
 					req.flash('danger', errors.array())
 					res.render('admin/addpost',{
 							layout: 'admin/layout',
 							website_name: 'MEAN Blog',
 							page_heading: 'Dashboard',
 							page_subheading: 'Add New Post',
+							categories: categories,
 							form:form
 						}
 					);
+			});
 	} else {
 			post.save(function(err) {
 					if (err) {
@@ -90,11 +102,11 @@ exports.updatePost = (req, res, next) => {
 
 	const query = {_id:req.params.id}
 
-	var form = {
+	const form = {
 		titleholder: req.body.title,
 		excerptholder: req.body.excerpt,
 		bodyholder: req.body.body
-};
+	};
 
 	const errors = validationResult(req);
 	
@@ -104,6 +116,7 @@ exports.updatePost = (req, res, next) => {
 		post.title = req.body.title;
 		post.short_description = req.body.excerpt
 		post.full_text = req.body.body;
+		post.category = req.body.category;
 		if (req.file) {
 			post.post_image = req.file.filename;
 		} 
