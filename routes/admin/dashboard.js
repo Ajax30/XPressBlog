@@ -29,4 +29,7 @@ router.delete('/post/delete/:id', dashboardController.deletePost);
 // Display Categories
 router.get('/categories', categoriesController.showCategories);
 
+// Delete Category
+router.delete('/category/delete/:id', categoriesController.deleteCategory);
+
 module.exports = router;

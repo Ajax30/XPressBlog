@@ -15,3 +15,15 @@ exports.showCategories = (req, res, next) => {
         }
     });
 };
+
+
+exports.deleteCategory = (req, res, next) => {
+	const catId = req.params.id;
+	Category.findByIdAndRemove(catId, function(err){
+		if (err) {
+			console.log('Error: ', err);
+		}
+		res.sendStatus(200);
+	});
+}
+  
