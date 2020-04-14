@@ -29,6 +29,18 @@ router.delete('/post/delete/:id', dashboardController.deletePost);
 // Display Categories
 router.get('/categories', categoriesController.showCategories);
 
+// Render add Categories Form
+router.get('/categories/addcategory', categoriesController.addCategoryForm);
+
+// Add Category
+router.post('/category/add', validator.addCategoryCheck, categoriesController.addCategory);
+
+// Edit Post
+router.get('/category/edit/:id', categoriesController.editCategory);
+
+// Update Category
+router.post('/category/update/:id', validator.addCategoryCheck, categoriesController.updateCategory);
+
 // Delete Category
 router.delete('/category/delete/:id', categoriesController.deleteCategory);
 

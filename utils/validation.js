@@ -11,3 +11,9 @@ exports.addPostCheck = [
     .not()
     .isEmpty()
 ];
+
+exports.addCategoryCheck = [
+    check('cat_name', 'The category field id required')
+    .not()
+    .isEmpty()
+];
