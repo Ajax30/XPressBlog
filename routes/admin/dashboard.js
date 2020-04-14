@@ -3,6 +3,7 @@ const express = require('express');
 const imageUploader = require('../../utils/imageupload.js');
 const validator = require('../../utils/validation.js');
 const dashboardController = require('../../controllers/admin/dashboard');
+const categoriesController = require('../../controllers/admin/categories');
 
 // Express router
 const router = express.Router();
@@ -24,5 +25,8 @@ router.post('/post/update/:id', imageUploader.upload, validator.addPostCheck, da
 
 // Delete Post
 router.delete('/post/delete/:id', dashboardController.deletePost);
+
+// Display Categories
+router.get('/categories', categoriesController.showCategories);
 
 module.exports = router;
