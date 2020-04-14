@@ -9,7 +9,8 @@ exports.showCategories = (req, res, next) => {
             res.render('admin/categories', {
               layout: 'admin/layout',
               website_name: 'MEAN Blog',
-              page_heading: 'Post Categories',
+			  page_heading: 'Dashboard',
+			  page_subheading: 'Categories',
               categories: categories
             });
         }
