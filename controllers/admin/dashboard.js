@@ -15,7 +15,7 @@ exports.displayDashboard = (req, res, next) => {
               posts: posts
             });
         }
-    }).populate({ path: 'category', model: Category })
+    }).populate('category');
 };
 
 exports.addPostForm = (req, res, next) => {
@@ -84,17 +84,20 @@ exports.editPost = (req, res, next) => {
 	const postId = req.params.id;
 
 	Post.findById(postId, function(err, post){
-		if (err) {
-			console.log('Error: ', err);
-		} else {
-			res.render('admin/editpost', {
-        layout: 'admin/layout',
-        website_name: 'MEAN Blog',
-        page_heading: 'Dashboard',
-				page_subheading: 'Edit Post',
-				post: post
-			});
-		}
+		const categories = Category.find({}, (err, categories) => {
+			if (err) {
+				console.log('Error: ', err);
+			} else {
+				res.render('admin/editpost', {
+					layout: 'admin/layout',
+					website_name: 'MEAN Blog',
+					page_heading: 'Dashboard',
+					page_subheading: 'Edit Post',
+					categories: categories,
+					post: post
+				});
+			}
+		});
 	});
 }
 

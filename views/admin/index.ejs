@@ -25,7 +25,7 @@
 								<td class="col-2">
 									<a href="/<%= post._id %>" class="text-dark"><%= post.title %></a>
 								</td>
-								<td class="col-2"><%= post.category.cat_name %></td>
+								<td class="col-2"><%= post.category != null ? post.category.cat_name : 'No category assigned' %></td>
 								<td class="col-2"><%= post.created_at.toDateString(); %></td>
 								<td class="col-2"><%= post.updated_at.toDateString(); %></td>
 								<td class="col-3 text-right pr-2">
