@@ -10,10 +10,10 @@
 						<thead>
 							<tr class="d-flex">
 								<th class="col-1 pl-2">#</th>
-								<th class="col-4 col-lg-5">Category name</th>
+								<th class="col-5">Category name</th>
 								<th class="col-2">Created</th>
 								<th class="col-2">Updated</th>
-								<th class="col-3 col-lg-2 pr-2 text-right">Actions</th>
+								<th class="col-2 col-lg-2 pr-2 text-right">Actions</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -21,10 +21,10 @@
 							<% categories.forEach(function(category, index) { %>
 							<tr data-id="<%= category._id %>" class="d-flex">
 								<td class="col-1 pl-2"><%= index + 1 %></td>
-								<td class="col-4 col-lg-5"><%= category.cat_name %></td>
+								<td class="col-5"><%= category.cat_name %></td>
 								<td class="col-2"><%= category.created_at.toDateString(); %></td>
 								<td class="col-2"><%= category.updated_at.toDateString(); %></td>
-								<td class="col-3 col-lg-2 text-right pr-2">
+								<td class="col-2 col-lg-2 pr-2 text-right">
 									<div class="btn-group">
 										<a href="../dashboard/category/edit/<%= category._id %>" class="btn btn-sm btn-success">Edit</a>
 										<a href="#" class="btn btn-sm btn-danger delete-category" data-id="<%= category._id %>">Delete</a>
