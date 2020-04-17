@@ -17,6 +17,17 @@
 							<textarea rows="5" class="form-control" name="body" placeholder="Full text"><%= typeof form!='undefined' ? form.bodyholder : post.full_text %></textarea>
 					</div>
 
+					<% if (categories) { %>
+						<div class="form-group">
+							<label for="categores">Choose a post category</label>
+							<select id="categores" name="category"  class="form-control">
+								<% categories.forEach(function(category, index) { %>
+									<option value="<%= category._id %>"><%= category.cat_name %></option>
+								<% }); %>
+							</select>
+						</div>
+						<% } %>
+
 						<label for="postimage">Upload an image</label>
 						<div class="form-group">
 							<input type="file" name="postimage" id="postimage" size="20">
