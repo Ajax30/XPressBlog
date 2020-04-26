@@ -19,8 +19,8 @@
 
 					<% if (categories) { %>
 						<div class="form-group">
-							<label for="categores">Choose a post category</label>
-							<select id="categores" name="category"  class="form-control">
+							<label for="category">Choose a post category</label>
+							<select id="category" name="category"  class="form-control">
 								<% categories.forEach(function(category, index) { %>
 									<option value="<%= category._id %>" <%= category._id.toString() == post.category._id.toString() ? 'selected' : ''; %>><%= category.cat_name %></option>
 								<% }); %>

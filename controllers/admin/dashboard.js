@@ -125,16 +125,19 @@ exports.updatePost = (req, res, next) => {
 		} 
 
 		if (!errors.isEmpty()) {
-			req.flash('danger', errors.array())
-			res.render('admin/editpost',{
-				layout: 'admin/layout',
-				website_name: 'MEAN Blog',
-				page_heading: 'Dashboard',
-				page_subheading: 'Edit Post',
-				form: form,
-				post: post
-			}
-		);
+			req.flash('danger', errors.array());
+			const categories = Category.find({}, (err, categories) => {
+				res.render('admin/editpost',{
+					layout: 'admin/layout',
+					website_name: 'MEAN Blog',
+					page_heading: 'Dashboard',
+					page_subheading: 'Edit Post',
+					categories: categories,
+					form: form,
+					post: post
+				}
+			);
+		});
 		} else {
 			Post.update(query, post, function(err){
 					if(err){
