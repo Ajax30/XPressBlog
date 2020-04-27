@@ -15,7 +15,7 @@ exports.getPosts = (req, res, next) => {
                 posts: posts.reverse(),
             });
         }
-    });
+    }).populate('category');
 };
 
 exports.getSinglePost = (req, res, next) => {
