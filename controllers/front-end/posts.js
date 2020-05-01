@@ -30,11 +30,7 @@ exports.getPostsByCategory = (req, res, next) => {
 
     const postCategory = titleize(req.params.catname);
 
-    const posts = Post.find({
-        cat_name: {
-            $eq: postCategory
-        }
-    }, (err, posts) => {
+    const posts = Post.find({ cat_name: postCategory }, (err, posts) => {
         if (err) {
             console.log('Error: ', err);
         } else {

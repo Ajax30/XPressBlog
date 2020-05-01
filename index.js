@@ -70,7 +70,7 @@ app.use(function (req, res, next) {
 // Bring the Dashboard
 const dashboardRoute = require("./routes/admin/dashboard");
 
-// Get Dashboard Routes
+// Register Dashboard Routes
 app.use('/dashboard', dashboardRoute);
 
 // Bring the Posts Routes
@@ -81,4 +81,4 @@ app.use('/', postsRoute);
 
 const port = process.env.PORT || 8080;
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`App listening on port ${port}!`));

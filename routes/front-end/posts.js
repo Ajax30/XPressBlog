@@ -7,10 +7,10 @@ const router = express.Router();
 // Get Posts
 router.get('/', postsController.getPosts);
 
-// Get Single Post
-router.get('/:id', postsController.getSinglePost);
-
 // Get Posts by Category
 router.get('/:catname', postsController.getPostsByCategory);
+
+// Get Single Post
+router.get('/:id', postsController.getSinglePost);
 
 module.exports = router;
