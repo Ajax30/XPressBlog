@@ -1,8 +1,8 @@
 const Category = require('../../models/categories');
 const { validationResult } = require('express-validator');
 
-exports.showCategories = (req, res, next) => {
-    const categories = Category.find({}, (err, categories) => {
+exports.showCategories = async (req, res, next) => {
+    const categories = await Category.find({}, (err, categories) => {
         if(err){
             console.log('Error: ', err);
         } else {

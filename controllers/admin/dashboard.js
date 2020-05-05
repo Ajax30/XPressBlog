@@ -3,8 +3,8 @@ const Category = require('../../models/categories');
 const {upload} = require('multer');
 const {validationResult} = require('express-validator');
 
-exports.displayDashboard = (req, res, next) => {
-    const posts = Post.find({}, (err, posts) => {
+exports.displayDashboard = async (req, res, next) => {
+    const posts = await Post.find({}, (err, posts) => {
         if (err) {
             console.log('Error: ', err);
         } else {
@@ -18,8 +18,8 @@ exports.displayDashboard = (req, res, next) => {
     }).populate('category');
 };
 
-exports.addPostForm = (req, res, next) => {
-    const categories = Category.find({}, (err, categories) => {
+exports.addPostForm = async (req, res, next) => {
+    const categories = await Category.find({}, (err, categories) => {
         if (err) {
             console.log('Error: ', err);
         } else {
@@ -79,7 +79,7 @@ exports.addPost = (req, res, next) => {
     }
 }
 
-exports.editPost = (req, res, next) => {
+exports.editPost = async (req, res, next) => {
     const postId = req.params.id;
 
     Post.findById(postId, function(err, post) {
