@@ -1,5 +1,5 @@
 const Post = require('../../models/post');
-const Category=require('../../models/categories');
+const Category = require('../../models/categories');
 const moment = require('moment');
 
 exports.getPosts = async (req, res, next) => {
@@ -24,12 +24,11 @@ exports.getPostsByCategory = async (req, res, next) => {
     function titleize(slug) {
         var words = slug.split("-");
         return words.map(function(word) {
-            //return word;
             return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
         }).join(' ');
     }
 
-    const postCategory = titleize(req.params.catname);
+    const postCategory = new RegExp(titleize(req.params.catname),"ig");
 
     const singleCategory = await Category.findOne({cat_name:postCategory})
 
