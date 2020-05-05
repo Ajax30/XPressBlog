@@ -1,8 +1,9 @@
 const Post = require('../../models/post');
+const Category=require('../../models/categories');
 const moment = require('moment');
 
-exports.getPosts = (req, res, next) => {
-    const posts = Post.find({}, (err, posts) => {
+exports.getPosts = async (req, res, next) => {
+    const posts = await Post.find({}, (err, posts) => {
         if (err) {
             console.log('Error: ', err);
         } else {
@@ -18,7 +19,7 @@ exports.getPosts = (req, res, next) => {
     }).populate('category');
 };
 
-exports.getPostsByCategory = (req, res, next) => {
+exports.getPostsByCategory = async (req, res, next) => {
 
     function titleize(slug) {
         var words = slug.split("-");
@@ -30,7 +31,9 @@ exports.getPostsByCategory = (req, res, next) => {
 
     const postCategory = titleize(req.params.catname);
 
-    const posts = Post.find({ cat_name: postCategory }, (err, posts) => {
+    const singleCategory = await Category.findOne({cat_name:postCategory})
+
+    const posts = await Post.find({ category : singleCategory }, (err, posts) => {
         if (err) {
             console.log('Error: ', err);
         } else {
