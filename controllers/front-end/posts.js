@@ -41,7 +41,7 @@ exports.getPostsByCategory = async (req, res, next) => {
                 layout: 'default/layout',
                 website_name: 'MEAN Blog',
                 page_heading: singleCategory.cat_name,
-                page_subheading: 'A MEAN Stack Blogging Application',
+                page_subheading: '',
                 posts: posts.reverse(),
             });
         }
