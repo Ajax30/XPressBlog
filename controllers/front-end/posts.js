@@ -13,10 +13,12 @@ exports.getPosts = async (req, res, next) => {
                 website_name: 'MEAN Blog',
                 page_heading: 'XPress News',
                 page_subheading: 'A MEAN Stack Blogging Application',
-                posts: posts.reverse(),
+                posts: posts,
             });
         }
-    }).populate('category');
+    })
+				.sort({created_at: -1})
+        .populate('category');
 };
 
 exports.getPostsByCategory = async (req, res, next) => {
@@ -42,10 +44,12 @@ exports.getPostsByCategory = async (req, res, next) => {
                 website_name: 'MEAN Blog',
                 page_heading: singleCategory.cat_name,
                 page_subheading: '',
-                posts: posts.reverse(),
+                posts: posts,
             });
         }
-    }).populate('category');
+		})
+		.sort({created_at: -1})
+		.populate('category');
 };
 
 exports.getSinglePost = (req, res, next) => {
