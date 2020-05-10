@@ -6,7 +6,7 @@ exports.getPosts = async (req, res, next) => {
 
 		const posts = await Post.find({}, (err, posts) => {
 
-			const perPage = 1;
+			const perPage = 5;
 
 			const currPage = req.query.page ? parseInt(req.query.page) : 1;
 

@@ -37,11 +37,11 @@
 					<% if (posts) {%>
 						<div class="clearfix d-flex justify-content-center">
               <div class="px-1">
-                  <a class="btn btn-primary" href="/?page=<%= currPage + pageIncrement %>">&larr; Older Posts</a>
+								<a class="btn btn-primary <%= pageDecrement == 0 ? 'disabled' : '' %>" href="/?page=<%= currPage - pageDecrement %>">&larr; Newer Posts</a>
               </div>
 
               <div class="px-1">
-								<a class="btn btn-primary" href="/?page=<%= currPage - pageDecrement %>">Newer Posts &rarr;</a>
+								<a class="btn btn-primary <%= pageIncrement == 0 ? 'disabled' : '' %>" href="/?page=<%= currPage + pageIncrement %>">Older Posts &rarr;</a>
               </div>
 					</div>
 					<% } %>
