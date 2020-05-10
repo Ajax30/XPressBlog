@@ -3,7 +3,21 @@ const Category = require('../../models/categories');
 const moment = require('moment');
 
 exports.getPosts = async (req, res, next) => {
-    const posts = await Post.find({}, (err, posts) => {
+
+		const posts = await Post.find({}, (err, posts) => {
+
+			const perPage = 1;
+
+			const currPage = req.query.page ? parseInt(req.query.page) : 1;
+
+			const postsCount = posts.length;
+
+			const pageCount = Math.ceil(postsCount/perPage);		
+
+			const pageDecrement = currPage > 1 ? 1 : 0;
+	
+			const pageIncrement = currPage < pageCount ? 1 : 0;
+
         if (err) {
             console.log('Error: ', err);
         } else {
@@ -12,13 +26,18 @@ exports.getPosts = async (req, res, next) => {
                 layout: 'default/layout',
                 website_name: 'MEAN Blog',
                 page_heading: 'XPress News',
-                page_subheading: 'A MEAN Stack Blogging Application',
-                posts: posts,
+								page_subheading: 'A MEAN Stack Blogging Application',
+								currPage: currPage,
+								pageDecrement: pageDecrement,
+								pageIncrement: pageIncrement,
+								posts: posts
             });
         }
     })
 				.sort({created_at: -1})
-        .populate('category');
+				.populate('category')
+				.limit(perPage)
+				.skip(currPage - 1) * perPage;
 };
 
 exports.getPostsByCategory = async (req, res, next) => {
